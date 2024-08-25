@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hehehehe</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.4), rgba(0, 0, 0, 0.8));
+            overflow: hidden;
+            flex-direction: column;
+            position: relative;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        h1 {
+            color: pink;
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 2; /* Đặt tiêu đề trên cùng */
+        }
+
+        .heart {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: pink;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.5s infinite;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            cursor: pointer;
+            transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
+            z-index: 1; /* Đặt trái tim dưới tiêu đề */
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: pink;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -75px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 75px;
+            top: 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1) rotate(-45deg);
+            }
+            25% {
+                transform: scale(1.1) rotate(-45deg);
+                box-shadow: 0 0 30px rgba(255, 105, 180, 0.8), 0 0 60px rgba(255, 105, 180, 0.5);
+            }
+            50% {
+                transform: scale(1.2) rotate(-45deg);
+                box-shadow: 0 0 40px rgba(255, 105, 180, 1), 0 0 80px rgba(255, 105, 180, 0.7);
+            }
+            75% {
+                transform: scale(1.1) rotate(-45deg);
+                box-shadow: 0 0 30px rgba(255, 105, 180, 0.8), 0 0 60px rgba(255, 105, 180, 0.5);
+            }
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: radial-gradient(circle, rgba(255, 105, 180, 0.4), rgba(0, 0, 0, 0.8));
+            }
+            100% {
+                background: radial-gradient(circle, rgba(255, 105, 180, 0.6), rgba(0, 0, 0, 0.9));
+            }
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snowflakeAnimation 10s linear infinite;
+        }
+
+        @keyframes snowflakeAnimation {
+            0% {
+                transform: translateY(-100vh) translateX(calc(-50vw + 50%));
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(calc(-50vw + 50%));
+                opacity: 0;
+            }
+        }
+
+        /* Thêm nhiều tuyết */
+        .snowflake:nth-child(2) {
+            animation-delay: 1s;
+            animation-duration: 12s;
+            left: 10%;
+        }
+        .snowflake:nth-child(3) {
+            animation-delay: 2s;
+            animation-duration: 14s;
+            left: 30%;
+        }
+        .snowflake:nth-child(4) {
+            animation-delay: 3s;
+            animation-duration: 16s;
+            left: 50%;
+        }
+        .snowflake:nth-child(5) {
+            animation-delay: 4s;
+            animation-duration: 18s;
+            left: 70%;
+        }
+        .snowflake:nth-child(6) {
+            animation-delay: 5s;
+            animation-duration: 20s;
+            left: 90%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cho Ngọc Anh, từ trái tim của Thịnh nè</h1>
+    <div class="heart" id="heart"></div>
+
+    <!-- Tạo các điểm tuyết -->
+    <div class="snowflake" style="top: 10%;"></div>
+    <div class="snowflake" style="top: 20%;"></div>
+    <div class="snowflake" style="top: 30%;"></div>
+    <div class="snowflake" style="top: 40%;"></div>
+    <div class="snowflake" style="top: 50%;"></div>
+    <div class="snowflake" style="top: 60%;"></div>
+    <div class="snowflake" style="top: 70%;"></div>
+    <div class="snowflake" style="top: 80%;"></div>
+    <div class="snowflake" style="top: 90%;"></div>
+
+    <script>
+        const heart = document.getElementById('heart');
+
+        function getRandomPosition(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        heart.addEventListener('click', () => {
+            const maxX = window.innerWidth - heart.clientWidth;
+            const maxY = window.innerHeight - heart.clientHeight;
+
+            const randomX = getRandomPosition(maxX);
+            const randomY = getRandomPosition(maxY);
+
+            heart.style.left = randomX + 'px';
+            heart.style.top = randomY + 'px';
+        });
+    </script>
+</body>
+</html>
